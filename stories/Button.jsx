@@ -1,16 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './button.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./button.css";
 
 /**
  * Primary UI component for user interaction
  */
 export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  // Determine the button mode (primary or secondary) based on the 'primary' prop
+  const mode = primary
+    ? "storybook-button--primary"
+    : "storybook-button--secondary";
+
+  // Render the button with the appropriate classes and styles
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={["storybook-button", `storybook-button--${size}`, mode].join(
+        " "
+      )}
       {...props}
     >
       {label}
@@ -23,6 +30,7 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   );
 };
 
+// Define the prop types for the Button component
 Button.propTypes = {
   /**
    * Is this the principal call to action on the page?
@@ -35,7 +43,7 @@ Button.propTypes = {
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
    * Button contents
    */
@@ -46,9 +54,10 @@ Button.propTypes = {
   onClick: PropTypes.func,
 };
 
+// Define the default props for the Button component
 Button.defaultProps = {
   backgroundColor: null,
   primary: false,
-  size: 'medium',
+  size: "medium",
   onClick: undefined,
 };
